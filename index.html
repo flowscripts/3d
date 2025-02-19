@@ -84,6 +84,19 @@
             <input type="file" id="upload" class="file-input" accept=".glb,.obj,.fbx">
             <label for="upload" class="file-label">Choose 3D File</label>
             <button id="wireframeToggle">[Q] Toggle Wireframe</button>
+            <button id="saveAsCopy">Save Capture</button>
+<script>document.getElementById('saveAsCopy').addEventListener('click', saveAsScreenshot);
+
+    function saveAsScreenshot() {
+        renderer.render(scene, camera); // Ensure the scene is rendered
+        const screenshotDataURL = renderer.domElement.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = screenshotDataURL;
+        link.download = 'screenshot.png';
+        link.click();
+    }
+    </script>
+
             <div id="colorMenu">
                 <input type="color" id="colorPicker">
             </div>
